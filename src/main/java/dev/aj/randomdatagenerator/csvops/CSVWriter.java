@@ -37,7 +37,7 @@ public class CSVWriter {
                     .withSeparator(com.opencsv.CSVWriter.DEFAULT_SEPARATOR)
                     .build();
 
-            generateMemberData.generateDateForMultipleMembers(howMany)
+            generateMemberData.generateDataForMultipleMembers(howMany)
                     .forEach(member -> {
                         try {
                             csvWriter.write(member);

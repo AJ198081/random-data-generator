@@ -35,7 +35,7 @@ public class GenerateMemberData {
                 .build();
     }
 
-    public List<ProcessedEntity> generateDateForMultipleMembers(int howMany) {
+    public List<ProcessedEntity> generateDataForMultipleMembers(int howMany) {
 
         return IntStream.rangeClosed(1, howMany)
                 .mapToObj(entry -> generateSingleMemberData())
