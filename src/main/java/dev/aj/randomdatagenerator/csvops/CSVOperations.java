@@ -29,10 +29,13 @@ public class CSVOperations {
     private GenerateMemberData generateMemberData;
 
     public void generateDataToCSV(int howMany) throws IOException {
+
+        String fileName = String.format("%s_%d_records.csv", outputFileLocation, howMany);
+
         StopWatch stopWatch = new StopWatch("stream");
         stopWatch.start();
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFileLocation))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
 
             StatefulBeanToCsv<TableEntity> csvWriter = new StatefulBeanToCsvBuilder<TableEntity>(writer)
                     .withSeparator(ICSVWriter.DEFAULT_SEPARATOR)

@@ -26,6 +26,8 @@ public class GenerateMemberData {
 
         Faker faker = new Faker(new Locale("en-AU"));
 
+        //Populate your entity here, make sure all fields have the values (simulated or constants) that you want
+        // http://dius.github.io/java-faker/apidocs/index.html - for the data you can have, and types, make sure they match
         return TableEntity.builder()
                 .memberNumber(MEMBER_NUMBER_PREFIX.concat(faker.number().digits(MEMBER_NUMBER_DIGITS)))
                 .payrollNumber(PAYROLL_NUMBER_PREFIX.concat(faker.number().digits(PAYROLL_NUMBER_DIGITS)))

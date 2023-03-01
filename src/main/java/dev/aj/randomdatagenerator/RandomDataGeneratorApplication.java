@@ -21,7 +21,7 @@ public class RandomDataGeneratorApplication {
     @PostConstruct
     public void run() {
         try {
-            csvOperations.generateDataToCSV(10);
+            csvOperations.generateDataToCSV(120_000); //Can have underscore to help visualise the value
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

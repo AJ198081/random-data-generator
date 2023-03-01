@@ -14,19 +14,22 @@ import lombok.Setter;
 @Setter
 public class TableEntity {
 
-    @CsvBindByName(column = "FIRST_NAME")
+    // Here is the kind of data you can generate http://dius.github.io/java-faker/apidocs/index.html
+    // The 'column' name is the name that will appear for the column headers
+
+    @CsvBindByName(column = "Given Name")
     private String firstName;
 
-    @CsvBindByName(column = "LAST_NAME")
+    @CsvBindByName(column = "Family Name")
     private String lastName;
 
-    @CsvBindByName(column = "PAYROLL_NUMBER")
+    @CsvBindByName(column = "Payroll Number Identifier")
     private String payrollNumber;
 
-    @CsvBindByName(column = "MEMBER_NUMBER")
+    @CsvBindByName(column = "Member Client Identifier")
     private String memberNumber;
 
-    @CsvBindByName(column = "DATE_OF_BIRTH")
+    @CsvBindByName(column = "Birth Date")
     private String dateOfBirth;
 
 }
