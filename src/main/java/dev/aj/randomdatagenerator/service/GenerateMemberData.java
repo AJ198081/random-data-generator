@@ -1,7 +1,7 @@
 package dev.aj.randomdatagenerator.service;
 
 import com.github.javafaker.Faker;
-import dev.aj.randomdatagenerator.entities.ProcessedEntity;
+import dev.aj.randomdatagenerator.entities.TableEntity;
 import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
@@ -20,13 +20,13 @@ public class GenerateMemberData {
     public static final int MIN_AGE = 20;
     public static final int MAX_AGE = 60;
 
-    private ProcessedEntity generateSingleMemberData() {
+    private TableEntity generateSingleMemberData() {
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
         Faker faker = new Faker(new Locale("en-AU"));
 
-        return ProcessedEntity.builder()
+        return TableEntity.builder()
                 .memberNumber(MEMBER_NUMBER_PREFIX.concat(faker.number().digits(MEMBER_NUMBER_DIGITS)))
                 .payrollNumber(PAYROLL_NUMBER_PREFIX.concat(faker.number().digits(PAYROLL_NUMBER_DIGITS)))
                 .firstName(faker.name().firstName())
@@ -35,7 +35,7 @@ public class GenerateMemberData {
                 .build();
     }
 
-    public List<ProcessedEntity> generateDataForMultipleMembers(int howMany) {
+    public List<TableEntity> generateBulkDataForTableEntity(int howMany) {
 
         return IntStream.rangeClosed(1, howMany)
                 .mapToObj(entry -> generateSingleMemberData())

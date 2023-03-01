@@ -1,6 +1,6 @@
 package dev.aj.randomdatagenerator;
 
-import dev.aj.randomdatagenerator.csvops.CSVWriter;
+import dev.aj.randomdatagenerator.csvops.CSVOperations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,7 +12,7 @@ import java.io.IOException;
 public class RandomDataGeneratorApplication {
 
     @Autowired
-    private CSVWriter csvWriter;
+    private CSVOperations csvOperations;
 
     public static void main(String[] args) {
         SpringApplication.run(RandomDataGeneratorApplication.class, args);
@@ -21,7 +21,7 @@ public class RandomDataGeneratorApplication {
     @PostConstruct
     public void run() {
         try {
-            csvWriter.processedEntity(10);
+            csvOperations.generateDataToCSV(10);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

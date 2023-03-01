@@ -12,16 +12,20 @@ import lombok.Setter;
 @Builder
 @Getter
 @Setter
-public class ProcessedEntity{
+public class TableEntity {
 
     @CsvBindByName(column = "FIRST_NAME")
     private String firstName;
+
     @CsvBindByName(column = "LAST_NAME")
     private String lastName;
+
     @CsvBindByName(column = "PAYROLL_NUMBER")
     private String payrollNumber;
+
     @CsvBindByName(column = "MEMBER_NUMBER")
     private String memberNumber;
+
     @CsvBindByName(column = "DATE_OF_BIRTH")
     private String dateOfBirth;
 
