@@ -21,7 +21,7 @@ public class RandomDataGeneratorApplication {
     @PostConstruct
     public void run() {
         try {
-            writeOperation.getWriteOperation(WriteType.XML).generateDataToFile(5);
+            writeOperation.getWriteOperation(WriteType.CSV).generateDataToFile(5);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

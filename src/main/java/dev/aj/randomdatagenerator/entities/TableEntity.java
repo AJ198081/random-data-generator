@@ -54,4 +54,8 @@ public class TableEntity {
     @CsvBindByName(column = "Designation")
     @XmlElement
     private String designation;
+
+    @CsvBindByName(column = "ABN")
+    @XmlElement(name = "abn")
+    private String abn;
 }

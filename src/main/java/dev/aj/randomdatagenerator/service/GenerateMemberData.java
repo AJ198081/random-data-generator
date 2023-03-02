@@ -2,6 +2,7 @@ package dev.aj.randomdatagenerator.service;
 
 import com.github.javafaker.Faker;
 import dev.aj.randomdatagenerator.entities.TableEntity;
+import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -13,6 +14,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Component
+@RequiredArgsConstructor
 public class GenerateMemberData {
 
     public static final String MEMBER_NUMBER_PREFIX = "M";
@@ -24,6 +26,8 @@ public class GenerateMemberData {
 
     @Value("${date.format.pattern}")
     private String dateFormatPattern;
+
+    private final ATOService atoService;
 
     private static final Faker faker = new Faker(new Locale("en-AU"));
 
@@ -43,6 +47,7 @@ public class GenerateMemberData {
                 .email(faker.internet().emailAddress())
                 .telephone(faker.phoneNumber().cellPhone())
                 .designation(faker.name().title())
+                .abn(atoService.generateValidABN())
                 .build();
     }
 
