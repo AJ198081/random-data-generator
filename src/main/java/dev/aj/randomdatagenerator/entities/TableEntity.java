@@ -23,11 +23,11 @@ public class TableEntity {
     @XmlElement(name = "title") // translates to Xml tag name for this field
     private String title;
 
-    @CsvBindByName(column = "Given Name")
+    @CsvBindByName(column = "MEM_FIRST_NAME")
     @XmlElement(name = "first-name")
     private String firstName;
 
-    @CsvBindByName(column = "MEM_FIRST_NAME")
+    @CsvBindByName(column = "MEM_LAST_NAME")
     @XmlElement(name = "last-name")
     private String lastName;
 

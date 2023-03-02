@@ -38,16 +38,16 @@ public class GenerateMemberData {
         //Populate your entity here, make sure all fields have the values (simulated or constants) that you want
         // http://dius.github.io/java-faker/apidocs/index.html - for the data you can have, and types, make sure they match
         return TableEntity.builder()
-                .memberNumber(MEMBER_NUMBER_PREFIX.concat(faker.number().digits(MEMBER_NUMBER_DIGITS)))
-                .payrollNumber(PAYROLL_NUMBER_PREFIX.concat(faker.number().digits(PAYROLL_NUMBER_DIGITS)))
-                .title(faker.name().prefix())
+//                .memberNumber(MEMBER_NUMBER_PREFIX.concat(faker.number().digits(MEMBER_NUMBER_DIGITS)))
+//                .payrollNumber(PAYROLL_NUMBER_PREFIX.concat(faker.number().digits(PAYROLL_NUMBER_DIGITS)))
+//                .title(faker.name().prefix())
                 .firstName(faker.name().firstName())
                 .lastName(faker.name().lastName().concat(RandomStringUtils.randomAlphabetic(10)))
-                .dateOfBirth(dateFormat.format(faker.date().birthday(MIN_AGE, MAX_AGE)))
-                .email(faker.internet().emailAddress())
-                .telephone(faker.phoneNumber().cellPhone())
-                .designation(faker.name().title())
-                .abn(atoService.generateValidABN())
+//                .dateOfBirth(dateFormat.format(faker.date().birthday(MIN_AGE, MAX_AGE)))
+//                .email(faker.internet().emailAddress())
+//                .telephone(faker.phoneNumber().cellPhone())
+//                .designation(faker.name().title())
+//                .abn(atoService.generateValidABN())
                 .build();
     }
 
