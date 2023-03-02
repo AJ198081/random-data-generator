@@ -2,6 +2,7 @@ package dev.aj.randomdatagenerator.service;
 
 import com.github.javafaker.Faker;
 import dev.aj.randomdatagenerator.entities.TableEntity;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -24,11 +25,12 @@ public class GenerateMemberData {
     @Value("${date.format.pattern}")
     private String dateFormatPattern;
 
+    private static final Faker faker = new Faker(new Locale("en-AU"));
+
     private TableEntity generateSingleMemberData() {
 
         SimpleDateFormat dateFormat = new SimpleDateFormat(dateFormatPattern);
 
-        Faker faker = new Faker(new Locale("en-AU"));
 
         //Populate your entity here, make sure all fields have the values (simulated or constants) that you want
         // http://dius.github.io/java-faker/apidocs/index.html - for the data you can have, and types, make sure they match
@@ -37,7 +39,7 @@ public class GenerateMemberData {
                 .payrollNumber(PAYROLL_NUMBER_PREFIX.concat(faker.number().digits(PAYROLL_NUMBER_DIGITS)))
                 .title(faker.name().prefix())
                 .firstName(faker.name().firstName())
-                .lastName(faker.name().lastName())
+                .lastName(faker.name().lastName().concat(RandomStringUtils.randomAlphabetic(10)))
                 .dateOfBirth(dateFormat.format(faker.date().birthday(MIN_AGE, MAX_AGE)))
                 .email(faker.internet().emailAddress())
                 .telephone(faker.phoneNumber().cellPhone())

@@ -1,4 +1,4 @@
-package dev.aj.randomdatagenerator.csvops;
+package dev.aj.randomdatagenerator.writeoperations;
 
 import com.opencsv.ICSVWriter;
 import com.opencsv.bean.StatefulBeanToCsv;
@@ -7,28 +7,27 @@ import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import dev.aj.randomdatagenerator.entities.TableEntity;
 import dev.aj.randomdatagenerator.service.GenerateMemberData;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StopWatch;
 
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 
 @Slf4j
 @Component
-public class CSVOperations {
+@RequiredArgsConstructor
+public class CSVOperations implements WriteOperation{
 
     @Value("${output.file.location}")
     private String outputFileLocation;
 
-    @Autowired
-    private GenerateMemberData generateMemberData;
+    private final GenerateMemberData generateMemberData;
 
-    public void generateDataToCSV(int howMany) throws IOException {
+    public void generateDataToFile(int howMany) {
 
         String fileName = String.format("%s_%d_records.csv", outputFileLocation, howMany);
 
@@ -51,8 +50,8 @@ public class CSVOperations {
                         }
                     });
 
-        } catch (FileNotFoundException e) {
-            throw new FileNotFoundException(e.getMessage());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
 
         stopWatch.stop();
