@@ -31,7 +31,6 @@ public class GenerateMemberData {
 
         SimpleDateFormat dateFormat = new SimpleDateFormat(dateFormatPattern);
 
-
         //Populate your entity here, make sure all fields have the values (simulated or constants) that you want
         // http://dius.github.io/java-faker/apidocs/index.html - for the data you can have, and types, make sure they match
         return TableEntity.builder()
@@ -48,10 +47,8 @@ public class GenerateMemberData {
     }
 
     public List<TableEntity> generateBulkDataForTableEntity(int howMany) {
-
         return IntStream.rangeClosed(1, howMany)
                 .mapToObj(entry -> generateSingleMemberData())
                 .collect(Collectors.toList());
     }
-
 }

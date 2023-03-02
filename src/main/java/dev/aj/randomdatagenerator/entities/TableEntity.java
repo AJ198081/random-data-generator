@@ -1,44 +1,38 @@
 package dev.aj.randomdatagenerator.entities;
 
 import com.opencsv.bean.CsvBindByName;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Getter
-@Setter
-@XmlRootElement(name = "member")
+@XmlRootElement(name = "member") // translates to Xml tag name for the root element of this type
 @XmlAccessorType(XmlAccessType.FIELD)
 public class TableEntity {
 
     // Data types you can generate http://dius.github.io/java-faker/apidocs/index.html
-    // The 'column' name translates to the column headers
-    // Ensure the fields from this class are mapped to GenerateMemberData's 'generateSingleMemberData' method
+    // Ensure the fields from this class are appropriately mapped to GenerateMemberData's 'generateSingleMemberData' method
 
-    @CsvBindByName(column = "Title")
-    @XmlElement
+    @CsvBindByName(column = "Title") // translates to csv header for this field
+    @XmlElement(name = "title") // translates to Xml tag name for this field
     private String title;
 
     @CsvBindByName(column = "Given Name")
-    @XmlElement
+    @XmlElement(name = "first-name")
     private String firstName;
 
     @CsvBindByName(column = "MEM_FIRST_NAME")
-    @XmlElement
+    @XmlElement(name = "last-name")
     private String lastName;
 
     @CsvBindByName(column = "Payroll Number Identifier")
-    @XmlElement
+    @XmlElement(name = "payroll-number")
     private String payrollNumber;
 
     @CsvBindByName(column = "Member Client Identifier")
