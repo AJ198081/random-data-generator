@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
+### Data Files ###
+*.csv
+*.json
+*.xml
