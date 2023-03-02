@@ -14,8 +14,12 @@ import lombok.Setter;
 @Setter
 public class TableEntity {
 
-    // Here is the kind of data you can generate http://dius.github.io/java-faker/apidocs/index.html
-    // The 'column' name is the name that will appear for the column headers
+    // Data types you can generate http://dius.github.io/java-faker/apidocs/index.html
+    // The 'column' name translates to the column headers
+    // Ensure the fields from this class are mapped to GenerateMemberData's 'generateSingleMemberData' method
+
+    @CsvBindByName(column = "Title")
+    private String title;
 
     @CsvBindByName(column = "Given Name")
     private String firstName;
@@ -32,4 +36,12 @@ public class TableEntity {
     @CsvBindByName(column = "Birth Date")
     private String dateOfBirth;
 
+    @CsvBindByName(column = "Email")
+    private String email;
+
+    @CsvBindByName(column = "Telephone")
+    private String telephone;
+
+    @CsvBindByName(column = "Designation")
+    private String designation;
 }

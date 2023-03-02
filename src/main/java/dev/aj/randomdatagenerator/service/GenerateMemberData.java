@@ -2,6 +2,7 @@ package dev.aj.randomdatagenerator.service;
 
 import com.github.javafaker.Faker;
 import dev.aj.randomdatagenerator.entities.TableEntity;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
@@ -13,16 +14,19 @@ import java.util.stream.IntStream;
 @Component
 public class GenerateMemberData {
 
-    public static final String MEMBER_NUMBER_PREFIX = "MN";
-    public static final String PAYROLL_NUMBER_PREFIX = "PN";
-    public static final int MEMBER_NUMBER_DIGITS = 20;
-    public static final int PAYROLL_NUMBER_DIGITS = 20;
+    public static final String MEMBER_NUMBER_PREFIX = "M";
+    public static final String PAYROLL_NUMBER_PREFIX = "P";
+    public static final int MEMBER_NUMBER_DIGITS = 15;
+    public static final int PAYROLL_NUMBER_DIGITS = 15;
     public static final int MIN_AGE = 20;
     public static final int MAX_AGE = 60;
 
+    @Value("${date.format.pattern}")
+    private String dateFormatPattern;
+
     private TableEntity generateSingleMemberData() {
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat(dateFormatPattern);
 
         Faker faker = new Faker(new Locale("en-AU"));
 
@@ -31,9 +35,13 @@ public class GenerateMemberData {
         return TableEntity.builder()
                 .memberNumber(MEMBER_NUMBER_PREFIX.concat(faker.number().digits(MEMBER_NUMBER_DIGITS)))
                 .payrollNumber(PAYROLL_NUMBER_PREFIX.concat(faker.number().digits(PAYROLL_NUMBER_DIGITS)))
+                .title(faker.name().prefix())
                 .firstName(faker.name().firstName())
                 .lastName(faker.name().lastName())
                 .dateOfBirth(dateFormat.format(faker.date().birthday(MIN_AGE, MAX_AGE)))
+                .email(faker.internet().emailAddress())
+                .telephone(faker.phoneNumber().cellPhone())
+                .designation(faker.name().title())
                 .build();
     }
 

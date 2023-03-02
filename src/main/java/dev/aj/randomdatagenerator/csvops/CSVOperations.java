@@ -39,6 +39,7 @@ public class CSVOperations {
 
             StatefulBeanToCsv<TableEntity> csvWriter = new StatefulBeanToCsvBuilder<TableEntity>(writer)
                     .withSeparator(ICSVWriter.DEFAULT_SEPARATOR)
+                    .withOrderedResults(true)
                     .build();
 
             generateMemberData.generateBulkDataForTableEntity(howMany)
