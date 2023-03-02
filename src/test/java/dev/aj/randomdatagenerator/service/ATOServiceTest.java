@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Value;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ATOServiceTest {
-
     private ATOService atoService;
 
     @BeforeEach
