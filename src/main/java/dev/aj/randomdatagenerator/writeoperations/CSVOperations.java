@@ -56,7 +56,6 @@ public class CSVOperations implements WriteOperation{
         }
 
         stopWatch.stop();
-
         log.info("{} records have been created in {} milliseconds", howMany, stopWatch.getLastTaskTimeMillis());
     }
 }

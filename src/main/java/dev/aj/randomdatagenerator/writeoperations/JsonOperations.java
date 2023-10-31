@@ -48,5 +48,8 @@ public class JsonOperations implements WriteOperation {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        stopWatch.stop();
+        log.info("{} records have been created in {} milliseconds", howMany, stopWatch.getLastTaskTimeMillis());
     }
 }
