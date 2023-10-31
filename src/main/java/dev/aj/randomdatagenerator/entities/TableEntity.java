@@ -1,6 +1,7 @@
 package dev.aj.randomdatagenerator.entities;
 
 import com.opencsv.bean.CsvBindByName;
+import java.time.Instant;
 import java.util.ArrayList;
 import lombok.*;
 
@@ -20,95 +21,95 @@ public class TableEntity {
     // Data types you can generate http://dius.github.io/java-faker/apidocs/index.html
     // Ensure the fields from this class are appropriately mapped to GenerateMemberData's 'generateSingleMemberData' method
 
-    @CsvBindByName(column = "id") // translates to csv header for this field
+    @CsvBindByName(column = "id")
     @XmlElement(name = "id")
     private String id;
 
-    @CsvBindByName(column = "MEM_FIRST_NAME")
+    @CsvBindByName
     @XmlElement
     private String custodianName;
 
-    @CsvBindByName(column = "MEM_LAST_NAME")
+    @CsvBindByName
     @XmlElement
     private String emailDestination;
 
-    @CsvBindByName(column = "Payroll Number Identifier")
+    @CsvBindByName
     @XmlElement
     private String emailDescription;
 
-    @CsvBindByName(column = "Member Client Identifier")
+    @CsvBindByName
     @XmlElement
     private String emailCcDestination;
 
-    @CsvBindByName(column = "Birth Date")
+    @CsvBindByName
     @XmlElement
     private String emailBccDestination;
 
-    @CsvBindByName(column = "Email")
+    @CsvBindByName
     @XmlElement
     private Long emailDistributionTime;
 
-    @CsvBindByName(column = "Telephone")
+    @CsvBindByName
     @XmlElement
     private String notificationType;
 
-    @CsvBindByName(column = "Designation")
+    @CsvBindByName
     @XmlElement
     private String employerSceid;
 
-    @CsvBindByName(column = "ABN")
+    @CsvBindByName
     @XmlElement
     private String memberGlobalId;
 
-    @CsvBindByName(column = "Member Client Identifier")
+    @CsvBindByName
     @XmlElement
     private String emailContent;
 
-    @CsvBindByName(column = "Birth Date")
+    @CsvBindByName
     @XmlElement
     private ArrayList<String> attachments;
 
-    @CsvBindByName(column = "Email")
+    @CsvBindByName
     @XmlElement
     private boolean hasAttachments;
 
-    @CsvBindByName(column = "Telephone")
+    @CsvBindByName
     @XmlElement
     private String attachmentIdentifier;
 
-    @CsvBindByName(column = "Designation")
+    @CsvBindByName
     @XmlElement
     private String emailStatus;
 
-    @CsvBindByName(column = "ABN")
+    @CsvBindByName
     @XmlElement
     private String emailSubject;
 
-    @CsvBindByName(column = "Member Client Identifier")
+    @CsvBindByName
     @XmlElement
     private String employerName;
 
-    @CsvBindByName(column = "Birth Date")
+    @CsvBindByName
     @XmlElement
     private String employeeFirstName;
 
-    @CsvBindByName(column = "Email")
+    @CsvBindByName
     @XmlElement
     private String employeeLastName;
 
-    @CsvBindByName(column = "Telephone")
+    @CsvBindByName
     @XmlElement
     private String employeePayrollId;
 
-    @CsvBindByName(column = "Designation")
+    @CsvBindByName
     @XmlElement
     private String employeeEmailAddress;
 
-    @CsvBindByName(column = "ABN")
+    @CsvBindByName
     @XmlElement
-    private String employeeDob;
+    private Long employeeDob;
 
-    @CsvBindByName(column = "employerAbn")
+    @CsvBindByName
     @XmlElement(name = "employerAbn")
     private String employerAbn;
 }

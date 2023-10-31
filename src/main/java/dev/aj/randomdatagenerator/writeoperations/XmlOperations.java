@@ -26,6 +26,7 @@ public class XmlOperations implements WriteOperation {
 
     private final GenerateMemberData generateMemberData;
 
+    @Override
     public void generateDataToFile(int howMany) throws IOException {
 
         String fileName = String.format("%s_%d_records.xml", outputFileLocation, howMany);

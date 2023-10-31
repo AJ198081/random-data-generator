@@ -95,8 +95,9 @@ public class GenerateMemberData {
                           .employeePayrollId(null)
                           .employeeEmailAddress(faker.internet()
                                                      .emailAddress())
-                          .employeeDob(dateFormat.format(faker.date()
-                                                              .birthday(18, 65)))
+                          .employeeDob(faker.date()
+                                            .birthday(18, 65)
+                                               .getTime())
                           .employerAbn("26055625897")
                           .build();
     }
