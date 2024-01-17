@@ -2,7 +2,9 @@ package dev.aj.randomdatagenerator.entities;
 
 import com.opencsv.bean.CsvBindByName;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import lombok.*;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -21,11 +23,11 @@ public class TableEntity {
     // Data types you can generate http://dius.github.io/java-faker/apidocs/index.html
     // Ensure the fields from this class are appropriately mapped to GenerateMemberData's 'generateSingleMemberData' method
 
-    @CsvBindByName(column = "id")
+  /*  @CsvBindByName(column = "id")
     @XmlElement(name = "id")
     private String id;
-
-    @CsvBindByName
+*/
+    /*@CsvBindByName
     @XmlElement
     private String custodianName;
 
@@ -52,16 +54,15 @@ public class TableEntity {
     @CsvBindByName
     @XmlElement
     private String notificationType;
-
+*/
+/*
     @CsvBindByName
     @XmlElement
     private String employerSceid;
+*/
 
-    @CsvBindByName
-    @XmlElement
-    private String memberGlobalId;
 
-    @CsvBindByName
+/*    @CsvBindByName
     @XmlElement
     private String emailContent;
 
@@ -71,9 +72,9 @@ public class TableEntity {
 
     @CsvBindByName
     @XmlElement
-    private boolean hasAttachments;
+    private boolean hasAttachments;*/
 
-    @CsvBindByName
+ /*   @CsvBindByName
     @XmlElement
     private String attachmentIdentifier;
 
@@ -84,14 +85,10 @@ public class TableEntity {
     @CsvBindByName
     @XmlElement
     private String emailSubject;
-
-    @CsvBindByName
+*/
+    /*@CsvBindByName
     @XmlElement
-    private String employerName;
-
-    @CsvBindByName
-    @XmlElement
-    private String employeeFirstName;
+    private String employerName;*/
 
     @CsvBindByName
     @XmlElement
@@ -99,7 +96,19 @@ public class TableEntity {
 
     @CsvBindByName
     @XmlElement
-    private String employeePayrollId;
+    private String employeeFirstName;
+
+    @CsvBindByName
+    @XmlElement
+    private String employeeMiddleName;
+
+    @CsvBindByName
+    @XmlElement
+    private LocalDate employeeDob;
+
+    @CsvBindByName
+    @XmlElement
+    private String streetAddress;
 
     @CsvBindByName
     @XmlElement
@@ -107,9 +116,13 @@ public class TableEntity {
 
     @CsvBindByName
     @XmlElement
-    private Long employeeDob;
+    private String memberClientIdentifier;
 
     @CsvBindByName
+    @XmlElement
+    private String payrollNumber;
+
+  /*  @CsvBindByName
     @XmlElement(name = "employerAbn")
-    private String employerAbn;
+    private String employerAbn;*/
 }

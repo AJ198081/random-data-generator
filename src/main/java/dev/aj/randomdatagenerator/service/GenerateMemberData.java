@@ -2,19 +2,19 @@ package dev.aj.randomdatagenerator.service;
 
 import com.github.javafaker.Faker;
 import dev.aj.randomdatagenerator.entities.TableEntity;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.concurrent.TimeUnit;
-import lombok.RequiredArgsConstructor;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import lombok.RequiredArgsConstructor;
+import org.apache.commons.text.CharacterPredicates;
+import org.apache.commons.text.RandomStringGenerator;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
@@ -28,13 +28,10 @@ public class GenerateMemberData {
     public static final int MAX_AGE = 60;
     private static final String CUSTODIAN_NAME = "GUILDSUPER";
     private static final String EMAIL_SUBJECT_PREFIX = "Subj: Email for ";
-
+    private static final Faker faker = new Faker(new Locale("en-AU"));
+    private final ATOService atoService;
     @Value("${date.format.pattern}")
     private String dateFormatPattern;
-
-    private final ATOService atoService;
-
-    private static final Faker faker = new Faker(new Locale("en-AU"));
 
     private TableEntity generateSingleMemberData() {
 
@@ -64,8 +61,13 @@ public class GenerateMemberData {
                                                                            .toLowerCase()))
                                                  .collect(Collectors.joining(" "));
 
+        RandomStringGenerator randomStringGenerator = new RandomStringGenerator.Builder()
+                .withinRange('0', 'z')
+                .filteredBy(CharacterPredicates.LETTERS, CharacterPredicates.DIGITS)
+                .build();
+
         return TableEntity.builder()
-                          .id(faker.number()
+                          /*.id(faker.number()
                                    .digits(10))
                           .custodianName(CUSTODIAN_NAME)
                           .emailDestination(faker.internet()
@@ -79,26 +81,26 @@ public class GenerateMemberData {
                                                       .past(3650, 1, TimeUnit.DAYS)
                                                       .getTime())
                           .notificationType(notificationType)
-                          .employerSceid("8b3d7ae2-19c0-4de2-ad0d-0fbeb73c2bba")
-                          .memberGlobalId(null)
-                          .emailContent(null)
-                          .attachments(new ArrayList<String>())
+                          .employerSceid("8b3d7ae2-19c0-4de2-ad0d-0fbeb73c2bba")*/
+                          /*.attachments(new ArrayList<String>())
                           .hasAttachments(false)
                           .attachmentIdentifier(null)
                           .emailStatus("SENT")
                           .emailSubject(EMAIL_SUBJECT_PREFIX.concat(stringifyNotificationType))
-                          .employerName("ACCOUNTANCY SERVICES PTY. LTD.")
-                          .employeeFirstName(faker.name()
-                                                  .firstName())
+                          .employerName("ACCOUNTANCY SERVICES PTY. LTD.")*/
                           .employeeLastName(faker.name()
                                                  .lastName())
-                          .employeePayrollId(null)
+                          .employeeFirstName(faker.name()
+                                                  .firstName())
+                          .employeeMiddleName(faker.name().nameWithMiddle().split("\\s")[1])
+                          .employeeDob(LocalDate.ofInstant(faker.date()
+                                                                .birthday(18, 65).toInstant(), ZoneId.systemDefault()))
+                          .streetAddress(faker.address().streetAddress())
                           .employeeEmailAddress(faker.internet()
                                                      .emailAddress())
-                          .employeeDob(faker.date()
-                                            .birthday(18, 65)
-                                               .getTime())
-                          .employerAbn("26055625897")
+                          .memberClientIdentifier(randomStringGenerator.generate(12)
+                          )
+                          .payrollNumber(randomStringGenerator.generate(10))
                           .build();
     }
 
