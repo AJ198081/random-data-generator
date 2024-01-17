@@ -28,7 +28,9 @@ public class GenerateMemberData {
     public static final int MAX_AGE = 60;
     private static final String CUSTODIAN_NAME = "GUILDSUPER";
     private static final String EMAIL_SUBJECT_PREFIX = "Subj: Email for ";
-    private static final Faker faker = new Faker(new Locale("en-AU"));
+    private static final Faker faker = new Faker(new Locale("en_IND"));
+//    private static final Faker faker = new Faker(new Locale("en_AU"));
+//    private static final Faker faker = new Faker(new Locale("en_GB"));
     private final ATOService atoService;
     @Value("${date.format.pattern}")
     private String dateFormatPattern;
